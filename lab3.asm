@@ -73,12 +73,12 @@ wideness:
 	mov		#0xFF, R13					; draw an 8x8 block
 	call	#writeNokiaByte
 
-	inc		r7
+	inc		r7		;move one col over
 
-	cmp.b	#9, r5
+	cmp.b	#9, r5		;loop counter
 	jnz		wideness
 
-	sub		#9, r7
+	sub		#9, r7		;set col back to where it was
 	call	#checkMove
 
 	call	#clearDisplay
