@@ -54,7 +54,7 @@ main:
 	mov		#0x0F, R7		;col
 
 while1:
-	bit.b	#8, &P2IN					; bit 3 of P1IN set?
+	bit.b	#8, &P2IN					; bit 3 of P2IN set?
 	jnz 	while1						; Yes, branch back and wait
 
 while0:
@@ -77,7 +77,58 @@ wideness:
 	cmp.b	#9, r5
 	jnz		wideness
 
+	call	#checkMove
+
 	jmp		while1
+
+;-------------------------------------------------------------------------------
+;	Name:		checkMove
+;	Inputs:		r6, r7
+;	Outputs:	r6, r7
+;	Purpose:	Check if button is pressed, adjust row or col accordingly
+;
+;	Registers:	R6	row
+;				R7	col
+;-------------------------------------------------------------------------------
+checkMove:
+noneYet:
+	bit.b	#2, &P2IN
+	jz		pressRight
+
+	bit.b	#4,	&P2IN
+	jz		pressLeft
+
+	bit.b	#16,&P2IN
+	jz		pressDown
+
+	bit.b	#32,&P2IN
+	jz		pressUp
+
+	jmp 	noneYet
+
+pressRight:
+	bit.b	#2, &P2IN
+	jz		pressRight		;wait for release
+	add		#8, r7
+	ret
+
+pressLeft:
+	bit.b	#4, &P2IN
+	jz		pressLeft		;wait for release
+	sub		#8, r7
+	ret
+
+pressDown:
+	bit.b	#16, &P2IN
+	jz		pressDown		;wait for release
+	sub		#8, r7
+	ret
+
+pressUp:
+	bit.b	#32, &P2IN
+	jz		pressUp		;wait for release
+	add		#8, r7
+	ret
 
 ;-------------------------------------------------------------------------------
 ;	Name:		initNokia		68(rows)x92(columns)
