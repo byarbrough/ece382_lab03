@@ -52,3 +52,8 @@ This shows that there is a 1.156 microsecond delay between pressing reset and MO
 ###A Functionality
 I thought I would include a video just for fun, but unfortunately, GitHub doesn't support files that large. You can still [download it](https://github.com/byarbrough/ece382_lab03/blob/master/demo.mp4?raw=true); I think it is worth watching.
 
+
+###Documentation
+C2C Jaasper Arnenberg told me to look at the setAdress table for the first table in the lab.
+C2C Ian Goodbody helped a little with understanding the logic analyzer.
+
