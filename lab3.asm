@@ -63,15 +63,14 @@ while0:
 
 	mov.b	#0, r5
 wideness:
-
-	mov		#NOKIA_DATA, R12			; For testing just draw an 8 pixel high
-	mov		#0xFF, R13					; beam with a 2 pixel hole in the center
-	call	#writeNokiaByte
-
 	inc		r5
 	mov		r6, r12
 	mov		r7,	r13
 	call	#setAddress
+
+	mov		#NOKIA_DATA, R12
+	mov		#0xFF, R13					; draw an 8x8 block
+	call	#writeNokiaByte
 
 	inc		r7
 
