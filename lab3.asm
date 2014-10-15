@@ -78,6 +78,7 @@ wideness:
 	cmp.b	#9, r5
 	jnz		wideness
 
+	sub		#9, r7
 	call	#checkMove
 
 	call	#clearDisplay
@@ -111,28 +112,25 @@ noneYet:
 pressRight:
 	bit.b	#2, &P2IN
 	jz		pressRight		;wait for release
-	inc		r7
+	add		#9, r7
 	ret
 
 pressLeft:
 	bit.b	#4, &P2IN
 	jz		pressLeft		;wait for release
-	dec		r7
-	dec		r7
+	sub		#9, r7
 	ret
 
 pressDown:
 	bit.b	#16, &P2IN
 	jz		pressDown		;wait for release
 	inc		r6
-	dec		r7
 	ret
 
 pressUp:
 	bit.b	#32, &P2IN
 	jz		pressUp		;wait for release
 	dec		r6
-	dec		r7
 	ret
 
 ;-------------------------------------------------------------------------------
