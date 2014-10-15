@@ -44,6 +44,11 @@ Line | Command/ Data |	8-bit packet
 
 This was the first button push, which fits because both the row and column values are at one.
 
+Finally, below is the screenshot of the reset.
+![alt text](https://raw.githubusercontent.com/byarbrough/ece382_lab03/master/rstDelay.png "Reset Delay")
+
+This shows that there is a 1.156 microsecond delay between pressing reset and MOSI changing.
+
 ###A Functionality
 I thought I would include a video just for fun, but unfortunately, GitHub doesn't support files that large. You can still [download it](https://github.com/byarbrough/ece382_lab03/blob/master/demo.mp4?raw=true); I think it is worth watching.
 
