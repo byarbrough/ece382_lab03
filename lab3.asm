@@ -61,6 +61,7 @@ while0:
 	bit.b	#8, &P2IN					; bit 3 of P1IN clear?
 	jz		while0						; Yes, branch back and wait
 
+fresh:
 	mov.b	#0, r5
 wideness:
 	inc		r5
@@ -79,7 +80,8 @@ wideness:
 
 	call	#checkMove
 
-	jmp		while1
+	call	#clearDisplay
+	jmp		fresh	;draw the new block
 
 ;-------------------------------------------------------------------------------
 ;	Name:		checkMove
@@ -109,25 +111,28 @@ noneYet:
 pressRight:
 	bit.b	#2, &P2IN
 	jz		pressRight		;wait for release
-	add		#8, r7
+	inc		r7
 	ret
 
 pressLeft:
 	bit.b	#4, &P2IN
 	jz		pressLeft		;wait for release
-	sub		#8, r7
+	dec		r7
+	dec		r7
 	ret
 
 pressDown:
 	bit.b	#16, &P2IN
 	jz		pressDown		;wait for release
-	sub		#8, r7
+	inc		r6
+	dec		r7
 	ret
 
 pressUp:
 	bit.b	#32, &P2IN
 	jz		pressUp		;wait for release
-	add		#8, r7
+	dec		r6
+	dec		r7
 	ret
 
 ;-------------------------------------------------------------------------------
