@@ -75,10 +75,10 @@ wideness:
 
 	inc		r7		;move one col over
 
-	cmp.b	#9, r5		;loop counter
+	cmp.b	#8, r5		;loop counter
 	jnz		wideness
 
-	sub		#9, r7		;set col back to where it was
+	sub		#8, r7		;set col back to where it was
 	call	#checkMove
 
 	call	#clearDisplay
@@ -118,7 +118,7 @@ pressRight:
 pressLeft:
 	bit.b	#4, &P2IN
 	jz		pressLeft		;wait for release
-	sub		#9, r7
+	sub		#8, r7
 	ret
 
 pressDown:
